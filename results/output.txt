@@ -1,0 +1,2 @@
+Instance	EVs_Used	LB	Columns	Cuts	Nodes	MP_Time	PP_Time	Time	UB	Num_Chargers	TIU	CIU	TAC					
+R101-25	9	633.6	450	0	3	0.15	0.47	0.94	634.7	3	1.0	0.8908	0.7699

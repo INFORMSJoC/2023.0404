@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<solution>
+    <info>
+        <dataset>Yamín et al. 2024</dataset>
+        <name>C202-50</name>
+        <num_routes>6</num_routes>
+        <objective>519.5</objective>
+    </info>
+    <routes>
+        <route id="1">
+            <cost>1006</cost>
+            <departure_time>284</departure_time>
+            <energy>1545</energy>
+            <load>250</load>
+            <initial_charging_period>100</initial_charging_period>
+            <last_charging_period>201</last_charging_period>
+            <charging_periods>102</charging_periods>
+            <nodes_sequence>0,20,24,29,6,32,33,31,35,37,38,39,36,34,51</nodes_sequence>
+            <arcs_sequence>32,827,1146,1424,373,1642,1686,1598,1792,1886,1920,1954,1832,1781</arcs_sequence>
+        </route>
+        <route id="2">
+            <cost>849</cost>
+            <departure_time>293</departure_time>
+            <energy>1339</energy>
+            <load>140</load>
+            <initial_charging_period>218</initial_charging_period>
+            <last_charging_period>292</last_charging_period>
+            <charging_periods>75</charging_periods>
+            <nodes_sequence>0,22,27,30,28,26,23,25,21,51</nodes_sequence>
+            <arcs_sequence>35,1005,1338,1534,1397,1252,1082,1203,961</arcs_sequence>
+        </route>
+        <route id="3">
+            <cost>908</cost>
+            <departure_time>1990</departure_time>
+            <energy>1521</energy>
+            <load>120</load>
+            <initial_charging_period>595</initial_charging_period>
+            <last_charging_period>687</last_charging_period>
+            <charging_periods>93</charging_periods>
+            <nodes_sequence>0,18,19,16,14,12,11,10,51</nodes_sequence>
+            <arcs_sequence>30,755,779,698,649,576,548,535</arcs_sequence>
+        </route>
+        <route id="4">
+            <cost>963</cost>
+            <departure_time>1220</departure_time>
+            <energy>1596</energy>
+            <load>140</load>
+            <initial_charging_period>978</initial_charging_period>
+            <last_charging_period>1098</last_charging_period>
+            <charging_periods>121</charging_periods>
+            <nodes_sequence>0,49,40,44,46,45,50,47,43,42,41,48,51</nodes_sequence>
+            <arcs_sequence>86,2321,1993,2119,2191,2162,2402,2226,2089,2056,2029,2309</arcs_sequence>
+        </route>
+        <route id="5">
+            <cost>706</cost>
+            <departure_time>1519</departure_time>
+            <energy>1233</energy>
+            <load>90</load>
+            <initial_charging_period>1386</initial_charging_period>
+            <last_charging_period>1454</last_charging_period>
+            <charging_periods>69</charging_periods>
+            <nodes_sequence>0,4,3,7,1,2,5,51</nodes_sequence>
+            <arcs_sequence>5,240,208,409,89,136,346</arcs_sequence>
+        </route>
+        <route id="6">
+            <cost>763</cost>
+            <departure_time>2463</departure_time>
+            <energy>1314</energy>
+            <load>120</load>
+            <initial_charging_period>1723</initial_charging_period>
+            <last_charging_period>1796</last_charging_period>
+            <charging_periods>74</charging_periods>
+            <nodes_sequence>0,15,17,13,9,8,51</nodes_sequence>
+            <arcs_sequence>25,674,722,615,484,474</arcs_sequence>
+        </route>
+    </routes>
+</solution>
