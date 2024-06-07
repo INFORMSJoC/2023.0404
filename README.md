@@ -103,4 +103,4 @@ To setup and run the project in Eclipse, follow these steps:
 ## Support
 
 For support in using this software, submit an
-[issue](https://github.com/tkralphs/JoCTemplate/issues/new).
+[issue](https://github.com/INFORMSJoC/2023.0404/issues/new).
