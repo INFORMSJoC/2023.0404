@@ -18,7 +18,6 @@ public class BranchVehiclesUp  implements BranchingDecision<EVRPTW,Route> {
 	public final int coefficient;							//RHS of the branching decision
 	public final NumberVehiclesInequalities inequality;		//inequality
 	public List<AbstractInequality> poolOfCuts;				//separated SRCs
-	public int timestep;									//timestep associated with the branching decision 
 
 	/**
 	 * Constructor of the class

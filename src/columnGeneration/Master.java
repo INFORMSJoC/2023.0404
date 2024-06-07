@@ -167,7 +167,7 @@ public final class Master extends AbstractMaster<EVRPTW, Route, PricingProblem, 
 			double dualConstant = 0; //constant dual values (not depending on the arc)
 			dualConstant+=masterData.cplex.getDual(roundedCapacityInequality);
 
-			//Branching on vehicles duals
+			// branching on vehicles duals
 			for(NumberVehiclesInequalities branching: masterData.branchingNumberOfVehicles.keySet())
 				dualConstant+=masterData.cplex.getDual(masterData.branchingNumberOfVehicles.get(branching));
 
@@ -186,18 +186,18 @@ public final class Master extends AbstractMaster<EVRPTW, Route, PricingProblem, 
 	public void addColumn(Route column) {
 		try {
 
-			//Register column with objective
+			// register column with objective
 			IloColumn iloColumn= masterData.cplex.column(obj,column.cost);
 
-			//Register column with partitioning constraint
+			// register column with partitioning constraint
 			for(int i: column.route.keySet())
 				iloColumn=iloColumn.and(masterData.cplex.column(visitCustomerConstraints[i-1], column.route.get(i)));
 
-			//Register column with chargers capacity constraints
+			// register column with chargers capacity constraints
 			for (int t = column.initialChargingTime; t <= (column.initialChargingTime+ column.chargingTime-1); t++)
 				iloColumn=iloColumn.and(masterData.cplex.column(chargersCapacityConstraints[t-1], 1));
 
-			//Register (artificial) column with rounded capacity inequality and branching decisions (vehicles)
+			// register (artificial) column with rounded capacity inequality and branching decisions (vehicles)
 			if(column.isArtificialColumn) {
 				iloColumn=iloColumn.and(masterData.cplex.column(roundedCapacityInequality, this.minimumNumberOfVehicles));
 				for (NumberVehiclesInequalities branch: masterData.branchingNumberOfVehicles.keySet()) {
@@ -208,13 +208,13 @@ public final class Master extends AbstractMaster<EVRPTW, Route, PricingProblem, 
 
 			if(!column.isArtificialColumn) {
 
-				//Register column with rounded capacity inequality
+				// register column with rounded capacity inequality
 				iloColumn=iloColumn.and(masterData.cplex.column(roundedCapacityInequality, 1));
 
 
-				//Register the column with Subset Row Inequalities Constraints
+				// register the column with Subset Row Inequalities Constraints
 				for(SubsetRowInequality subsetRowInequality: masterData.subsetRowInequalities.keySet()) {
-					//Check the number of visits to the customers in the triplet
+					// check the number of visits to the customers in the triplet
 					int coeff = getCoefficient(column, subsetRowInequality);
 					if(coeff>0){
 						IloRange subsetRowInequalityConstraint=masterData.subsetRowInequalities.get(subsetRowInequality);
@@ -222,13 +222,13 @@ public final class Master extends AbstractMaster<EVRPTW, Route, PricingProblem, 
 					}
 				}
 
-				//Register the column with the branching decision (number of vehicles)
+				// register the column with the branching decision (number of vehicles)
 				for (NumberVehiclesInequalities branch: masterData.branchingNumberOfVehicles.keySet()) {
 					IloRange branchConstraint = masterData.branchingNumberOfVehicles.get(branch);
 					iloColumn = iloColumn.and(masterData.cplex.column(branchConstraint,1));
 				}
 
-				//Register the column with branching decision (charging time)
+				// register the column with branching decision (charging time)
 				for (ChargingTimeInequality branch: masterData.branchingChargingTimes.keySet()) {
 					IloRange branchConstraint = masterData.branchingChargingTimes.get(branch);
 					if(branch.startCharging && column.initialChargingTime==branch.timestep) {
@@ -239,7 +239,7 @@ public final class Master extends AbstractMaster<EVRPTW, Route, PricingProblem, 
 				}
 			}
 
-			//Create the variable and store it
+			// create the variable and store it
 			IloNumVar var= masterData.cplex.numVar(iloColumn, 0, Double.MAX_VALUE, "x_"+masterData.getNrColumns());
 			masterData.cplex.add(var);
 			masterData.addColumn(column, var);
@@ -257,13 +257,13 @@ public final class Master extends AbstractMaster<EVRPTW, Route, PricingProblem, 
 
 		if(masterData.subsetRowInequalities.containsKey(subsetRowInequality))
 			throw new RuntimeException("Error, duplicate subset-row cut is being generated! This cut should already exist in the master problem: "+subsetRowInequality);
-		//Create the inequality in cplex
+		// create the inequality in CPLEX
 		try {
 			IloLinearNumExpr expr=masterData.cplex.linearNumExpr();
-			//Register the columns with this constraint.
+			// register the columns with this constraint.
 			for(Route route: masterData.getColumnsForPricingProblemAsList(masterData.pricingProblem)){
 				if(route.isArtificialColumn) continue;
-				//Check the number of visits to the customers in the triplet
+				// check the number of visits to the customers in the triplet
 				int coeff = getCoefficient(route, subsetRowInequality);
 				if(coeff>0){
 					IloNumVar var=masterData.getVar(masterData.pricingProblem,route);
@@ -300,7 +300,7 @@ public final class Master extends AbstractMaster<EVRPTW, Route, PricingProblem, 
 			IloNumVar[] vars=masterData.getVarMap().getValuesAsArray(new IloNumVar[masterData.getNrColumns()]);
 			double[] values= masterData.cplex.getValues(vars);
 
-			//Iterate over each column and add it to the solution if it has a non-zero value
+			// iterate over each column and add it to the solution if it has a non-zero value
 			for(int i=0; i<routes.length; i++){
 				routes[i].value=values[i];
 				if(values[i]>=config.PRECISION){
@@ -315,7 +315,7 @@ public final class Master extends AbstractMaster<EVRPTW, Route, PricingProblem, 
 				IloNumVar[] vars=masterData.getVarMap().getValuesAsArray(new IloNumVar[masterData.getNrColumns()]);
 				double[] values= masterData.cplex.getValues(vars);
 
-				//Iterate over each column and add it to the solution if it has a non-zero value
+				// iterate over each column and add it to the solution if it has a non-zero value
 				for(int i=0; i<routes.length; i++){
 					routes[i].value=values[i];
 					if(values[i]>=config.PRECISION){
@@ -368,7 +368,7 @@ public final class Master extends AbstractMaster<EVRPTW, Route, PricingProblem, 
 	 */
 	@Override
 	public void branchingDecisionPerformed(BranchingDecision bd) {
-		//For simplicity, we simply destroy the master problem and rebuild it. Of course, something more sophisticated may be used which retains the master problem.
+		// for simplicity, we simply destroy the master problem and rebuild it. Of course, something more sophisticated may be used which retains the master problem.
 		Set<NumberVehiclesInequalities> vehiclesInequalities = masterData.branchingNumberOfVehicles.keySet(); 	//keep branching decisions
 		Set<ChargingTimeInequality> chargingInequalities = masterData.branchingChargingTimes.keySet(); 			//keep branching decisions
 
@@ -447,18 +447,6 @@ public final class Master extends AbstractMaster<EVRPTW, Route, PricingProblem, 
 		else if (bd instanceof BranchEndChargingTimeUp) {
 			BranchEndChargingTimeUp branching = (BranchEndChargingTimeUp) bd;
 			masterData.branchingChargingTimes.remove(branching.inequality);
-		}
-	}
-
-	/**
-	 * Export the model to a file
-	 */
-	@Override
-	public void exportModel(String fileName){
-		try {
-			masterData.cplex.exportModel("./data/output" + fileName);
-		} catch (IloException e) {
-			e.printStackTrace();
 		}
 	}
 

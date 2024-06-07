@@ -52,7 +52,6 @@ The following two external (referenced) libraries are required to run this code:
 
 **2. jORLib**: For guidelines and instructions, visit the [jORLib GitHub Repository](https://github.com/coin-or/jorlib/tree/master) and the [Release Page](https://github.com/coin-or/jorlib/releases).
 
-**Important: The .jar files of these two libraries are in the `libs` folder in the project. Usually, you still need to download the .jar files from the websites above and replace the existing ones.**
 
 **Important: This project was coded using IBM CPLEX solver version 22.1 and jORLib branch-and-price framework version 1.1.1.**
 
@@ -92,7 +91,7 @@ To setup and run the project in Eclipse, follow these steps:
 
 **4. Add Dependencies:**
 
-- Ensure CPLEX and jORLib are included in the project's build path.
+- Ensure CPLEX and jORLib jar files are included in the project's build path.
 
 **5. Run the Project:**
 
