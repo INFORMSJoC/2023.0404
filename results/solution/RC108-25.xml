@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<solution>
+    <info>
+        <dataset>Yamín et al. 2024</dataset>
+        <name>RC108-25</name>
+        <num_routes>3</num_routes>
+        <objective>294.5</objective>
+    </info>
+    <routes>
+        <route id="1">
+            <cost>970</cost>
+            <departure_time>139</departure_time>
+            <energy>1584</energy>
+            <load>190</load>
+            <initial_charging_period>22</initial_charging_period>
+            <last_charging_period>138</last_charging_period>
+            <charging_periods>117</charging_periods>
+            <nodes_sequence>0,12,14,17,16,15,13,9,11,10,26</nodes_sequence>
+            <arcs_sequence>19,196,227,267,252,235,203,144,172,168</arcs_sequence>
+        </route>
+        <route id="2">
+            <cost>958</cost>
+            <departure_time>161</departure_time>
+            <energy>1539</energy>
+            <load>170</load>
+            <initial_charging_period>61</initial_charging_period>
+            <last_charging_period>160</last_charging_period>
+            <charging_periods>100</charging_periods>
+            <nodes_sequence>0,2,6,7,8,4,5,3,1,26</nodes_sequence>
+            <arcs_sequence>2,64,116,130,137,88,98,71,55</arcs_sequence>
+        </route>
+        <route id="3">
+            <cost>1017</cost>
+            <departure_time>176</departure_time>
+            <energy>1522</energy>
+            <load>180</load>
+            <initial_charging_period>82</initial_charging_period>
+            <last_charging_period>175</last_charging_period>
+            <charging_periods>94</charging_periods>
+            <nodes_sequence>0,22,20,19,18,21,23,25,24,26</nodes_sequence>
+            <arcs_sequence>38,323,297,283,274,314,339,362,352</arcs_sequence>
+        </route>
+    </routes>
+</solution>
