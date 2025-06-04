@@ -9,6 +9,9 @@ The software and data in this repository are a snapshot of the software and data
 that were used in the research reported on in the paper 
 [The Electric Vehicle Routing and Overnight Charging Scheduling Problem on a Multigraph](https://doi.org/10.1287/ijoc.2023.0404) by Daniel Yamín, Guy Desaulniers, and Jorge E. Mendoza.
 
+**Important: This code is being developed on an on-going basis at https://github.com/danielyamin97/BPC-mE-VRSPTW.
+Please go there if you would like to get a more recent version or would like support.**
+
 ## Cite
 
 To cite the contents of this repository, please cite both the paper and this repo, using their respective DOIs.
